@@ -7,6 +7,20 @@
   padding-left:25px;
   padding-top:20px;
   color:black;
+  box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.rtcrt-input{
+  padding-top: 40px;
+}
+
+.rtcrt{
+  margin-left: 10px;
+  margin-right: 10px;
+  height:570px;
+  margin-top: -15px;
+
 }
 
 .nav-content{
@@ -89,26 +103,6 @@ body{
 
 }
 
-.ic-size{
-  font-size:3em;
-  color:black;
-  padding-top:15px;
-}
-.ia-size{
-  font-size:3em;
-  color:black;
-  padding-top:60px;
-}
-.ib-size{
-  font-size:3em;
-  color:black;
-  padding-top:60px;
-}
-.id-size{
-  font-size:3em;
-  color:black;
-  padding-top:59px;
-}
 
 .card {
     /* Add shadows to create the "card" effect */
