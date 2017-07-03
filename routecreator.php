@@ -13,6 +13,7 @@
     }
   </style>
 
+
 </head>
 <body>
   <div class="container-fluid">
@@ -39,22 +40,36 @@
                 <h3>Route name:</h3>
             </div>
             <div class="col-md-4">
-                  <input type="text" placeholder="Enter Route Name" width="100%" height="48">
+                  <input type="text" id="routes" placeholder="Enter Route Name" width="100%" height="48">
             </div>
 
+          </div><br><br><br>
+
+          <div class="row">
+            <div class="col-xs-1.5" style="margin-left:15px;">
+                <h3>Stop name:</h3>
+            </div>
+            <div class="col-md-4">
+                  <input type="text" id="stop" placeholder="Enter Route Name" width="100%" height="48">
+            </div>
 
           </div>
-        <!--<table cellpadding="10">
-          <tr>
-            <td>
-              <h3>Route name</h3>
-            </td>
-            <td>
-              <input type="text" placeholder="Enter Route Name">
-            </td>
-          </tr>
-        </table>-->
+
+
       </div>
+
+      <button  onclick="setval()" style="margin-left:200px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
+      <script type="text/javascript">
+        function setval(){
+        var txt = document.getElementById('routes').value;
+        document.getElementById('cardp').innerHTML=txt;}
+      </script>
+      <div class="card">
+        <div class="container" >
+          <h3 id="cardp"></h3>
+        </div>
+      </div>
+
   </div>
 </div>
 </body>
