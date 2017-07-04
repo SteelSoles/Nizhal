@@ -14,8 +14,31 @@
       padding: 0;
     }
   </style>
+    
+    <?php
+    
+    $sql= new mysqli('localhost','root', '', 'digitrack' );
+
+                                                        if($sql->connect_error)
+
+                                                            { die("connection failed:". $sql->connect_error);
+                                                            }
+
+$query= $sql->query("select * from routes");
+
+if ($query!=TRUE)
+{
+    echo "error".$sql->error;
+}
+                                                
+    
+    ?>
 
 </head>
+    
+    
+    
+    
 <body>
   <div class="container-fluid">
 <div class="pannel-yellow">
@@ -37,29 +60,24 @@
     
     
     <div class="container well base">
-    
-            <div class="well cards">
+        
+                                    <?php
+                                            if($query!==FALSE)
+                                                    {
+                                                        while($row = mysqli_fetch_array($query))
+                                                                 {  
+                                                             echo " <div class=\"well cards\">" 
+                                                             .$row["route"]."
+                                                             
+                                                                    </div>";
+                                                                 }
+                                                                                mysqli_free_result($query);
+                                                    }
         
         
+                                    ?>    
+           
         
-            </div>
-        <div class="well cards">
-        
-        
-        
-            </div>
-        <div class="well cards">
-        
-        
-        
-            </div> 
-        <div class="well cards">
-        
-        
-        
-            </div>
-    
-    
     
     
     
