@@ -61,12 +61,21 @@
       <button  onclick="setval()" style="margin-left:200px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
       <script type="text/javascript">
         function setval(){
-        var txt = document.getElementById('routes').value;
-        document.getElementById('cardp').innerHTML=txt;}
+        var rt = document.getElementById('routes').value;
+        var st = document.getElementById('stop').value;
+        var pst=document.getElementById('card-stops').value;
+
+                pst += ",";
+                pst += st;
+
+        document.getElementById('cardp').innerHTML=rt;
+        document.getElementById('card-stops').innerHTML=pst;
+      }
       </script>
       <div class="card">
         <div class="container" >
           <h3 id="cardp"></h3>
+          <p id="card-stops"></p>
         </div>
       </div>
 
