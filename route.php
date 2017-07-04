@@ -24,7 +24,8 @@
                                                             { die("connection failed:". $sql->connect_error);
                                                             }
 
-$query= $sql->query("select * from routes");
+$query= $sql->query("select distinct route from routes");
+$query1= $sql->query("SELECT GROUP_CONCAT(stop SEPARATOR ', ') as stops FROM routes GROUP BY route");
 
 if ($query!=TRUE)
 {
@@ -57,8 +58,7 @@ if ($query!=TRUE)
   <!--nav ends here-->
 </div>
     </div>
-    
-    
+     
     <div class="container well base">
         
                                     <?php
@@ -66,21 +66,26 @@ if ($query!=TRUE)
                                                     {
                                                         while($row = mysqli_fetch_array($query))
                                                                  {  
-                                                             echo " <div class=\"well cards\">" 
-                                                             .$row["route"]."
-                                                             
-                                                                    </div>";
+                                                             echo " <div class=\"well cards\"> <h1>" 
+                                                             .$row["route"]."</h1>";
+                                                          $row1 = mysqli_fetch_array($query1); 
+                                                          
+                                                                echo "<p>".$row1["stops"]."</p></div>";      
+ 
+                                                          
+                                                                     
+                                                                     
+
                                                                  }
                                                                                 mysqli_free_result($query);
+                                                                                mysqli_free_result($query1);
                                                     }
         
+                 
         
+  
                                     ?>    
-           
-        
-    
-    
-    
+  
     
     
     
