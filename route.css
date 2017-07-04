@@ -1,0 +1,12 @@
+.base
+{
+   height: auto;
+}
+
+.cards
+{
+    height: 220px;
+    width: 220px;
+    float: left;
+    margin: 10px 20px 10px 20px;
+}

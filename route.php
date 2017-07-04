@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    
+ <link rel="stylesheet" href="route.css">   
 <style>
 
     html, body {
@@ -31,5 +33,40 @@
 <div style="width:100%; margin-top:17px;">
   <!--nav ends here-->
 </div>
+    </div>
+    
+    
+    <div class="container well base">
+    
+            <div class="well cards">
+        
+        
+        
+            </div>
+        <div class="well cards">
+        
+        
+        
+            </div>
+        <div class="well cards">
+        
+        
+        
+            </div> 
+        <div class="well cards">
+        
+        
+        
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
 </body>
 </html>
