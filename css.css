@@ -103,6 +103,10 @@ body{
 
 }
 
+.save-btn{
+  text-align: center;
+  padding-top: 30px;
+  }
 
 .card {
     /* Add shadows to create the "card" effect */

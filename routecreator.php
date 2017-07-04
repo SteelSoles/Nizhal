@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+
 <style>
 
     html, body {
@@ -39,8 +40,8 @@
             <div class="col-xs-1.5" style="margin-left:15px;">
                 <h3>Route name:</h3>
             </div>
-            <div class="col-md-4">
-                  <input type="text" id="routes" placeholder="Enter Route Name" width="100%" height="48">
+            <div class="col-md-6">
+                  <input type="text" id="routes" placeholder="Enter Route Name" width="20px" height="55px" style="font-size:15px;">
             </div>
 
           </div><br><br><br>
@@ -50,7 +51,7 @@
                 <h3>Stop name:</h3>
             </div>
             <div class="col-md-4">
-                  <input type="text" id="stop" placeholder="Enter Route Name" width="100%" height="48">
+                  <input type="text" id="stop" placeholder="Enter Stop Name" width="50px" height="55px" style="margin-left:10px; font-size:15px;">
             </div>
 
           </div>
@@ -63,23 +64,25 @@
         function setval(){
         var rt = document.getElementById('routes').value;
         var st = document.getElementById('stop').value;
-        var pst=document.getElementById('card-stops').value;
-
-                pst += ",";
-                pst += st;
-
+        var pst= document.getElementById('card-stops').innerHTML;
+        if(pst != "")
+        pst += ",";
+        pst += st;
         document.getElementById('cardp').innerHTML=rt;
         document.getElementById('card-stops').innerHTML=pst;
+        document.getElementById('stop').value = "";
       }
       </script>
-      <div class="card">
+      <div class="card" style="margin-top:10px">
         <div class="container" >
-          <h3 id="cardp"></h3>
-          <p id="card-stops"></p>
-        </div>
+          <h3 id="cardp">No Routes Yet</h3>
+          <h5 style="padding-top:20px"><span id="card-stops"></span></h5>
       </div>
-
   </div>
+  <div class="save-btn">
+    <button class="btn btn-warning ">Save</button>
+  </div>
+
 </div>
 </body>
 </html>
