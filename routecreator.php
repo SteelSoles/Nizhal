@@ -95,15 +95,28 @@
         if(pst != "")
         pst += ",";
         pst += st;
+        document.cookie = "rt" + rt;
         document.getElementById('cardp').innerHTML=rt;
         document.getElementById('card-stops').innerHTML=pst;
         document.getElementById('stop').value = "";
+        <?php
+        $myPhpVar= $_COOKIE['rt'];
+        $sql="insert into samp  values '$myPhpVar'";
+        try{
+      	 mysqli_query($con,$sql);
+
+        } catch (Exception $e) {
+      	  echo "Caught exception: ",  $e->getMessage();
+        }
+        mysqli_close($con);
+
+     ?>
       }
 
       function saveval(){
         var rt = document.getElementById('cardp').innerHTML;
         var rs = document.getElementById('card-stops').innerHTML;
-        window.alert(rs[0]);
+
       }
       </script>
       <div class="card" style="margin-top:10px">

@@ -1,3 +1,11 @@
+
+<?php
+    $q = "http://crewlabz.in/testget.php";
+    $json = file_get_contents($q);
+    $details = json_decode($json);
+    $distance=$details[0]->lat;
+    //echo $distance;
+?>
 <html>
 <head>
 <link rel="stylesheet" href="css.css">
@@ -5,12 +13,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 <style>
-    /* Always set the map height explicitly to define the size of the div
-     * element that contains the map. */
+
     #map {
       height: 100%;
     }
-    /* Optional: Makes the sample page fill the window. */
+
     html, body {
       height: 100%;
       margin: 0;
@@ -47,20 +54,27 @@
    <div class="card">
      <div class="container">
    <h4><b>Route-name 2</b></h4>
-   <p>stop1,stop2,stop3</p>
+   <p>stop1,stop2,stop3,<?php echo $distance; ?></p>
  </div>
    </div>
   </div>
 
 <div class=" align-right ">
   <div id="map"></div>
+
       <script>
         var map;
         function initMap() {
           map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
+            center: {lat: 13.11211, lng: 79.84354},
             zoom: 8
           });
+
+          var marker = new google.maps.Marker({
+            position:{lat: 13.11211, lng: 79.84354},
+            map: map,
+            title: 'chennai!'
+  });
         }
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD3JhqHiQ6D1476y-CDHAoFQML9zMhX0w&callback=initMap"
