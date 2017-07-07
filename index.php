@@ -9,13 +9,20 @@
 <?php
 define('HOST','localhost');
 define('USER','root');
-define('PASS','123456');
-define('DB','DigiTrack');
+define('PASS','');
+define('DB','digiTrack');
 $con = mysqli_connect(HOST,USER,PASS,DB);
 
-
+ $sql = "SELECT lat, lon
+    FROM device
+    ORDER BY entry DESC
+    LIMIT 1 ";
+  $res = mysqli_query($con,$sql);
+    $row = mysqli_fetch_array($res);
 //$result = array();
-?>
+         echo $row ['lat'];
+ echo $row ['lon'];
+ ?>
 
 <html>
 <head>
@@ -76,44 +83,59 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
       <script>
         var map;
-       function initMap() {
+       function initMap() 
+    {
           map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 11.11211, lng: 79.84354},
             zoom: 2
-          });
+          }); 
 
-}
-
-setInterval(   function initmarker() {
-    <?php
-
-    $sql = "SELECT lat, lon
-    FROM device
-    ORDER BY entry DESC
-    LIMIT 1 ";
-    $res = mysqli_query($con,$sql);
-    $row = mysqli_fetch_array($res) ?>
-    var marker = new google.maps.Marker({
-      position:{lat: <?php echo $row ['lat']; ?>, lng: <?php echo $row ['lon']; ?>},
+       var marker = new google.maps.Marker({
+      position:{lat:8 , lng:8 },
       map: map,
-      title: 'chennai!'
-}); },1000);
+      title: 'chennai!'});  
+           
+           
+              
+    setInterval(  function updatePosition() 
+           {
+               $.ajax({
+            
+        type : 'GET',
 
-      </script>
+        url: 'testget.php',
+        dataType: 'json',
+        data: 'data',
+        success : function callDone(data)
+                        {
+                        // update marker position
+                        var latLng = new google.maps.LatLng( data[0].lat, data[0].lon );
+                        marker.setPosition( latLng );
+                        // call the function again
+                        }
+                    }); 
+            }           , 1000 );
+
+   }
+    
+   
+        
+    </script>
+    </div>
+    </div>
+     
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD3JhqHiQ6D1476y-CDHAoFQML9zMhX0w&callback=initMap"
       async defer></script>
 </div>
-</div>
-</div>
 </body>
-<script> $(document).ready(function(){
+<!--<script> $(document).ready(function(){
       refresh();
     });
 
     function refresh(){
-        $('#map').load('ajaindex.php', function(){
-           setTimeout(refresh, 8000);
+        $('#js').load('ajaindex.php', function(){
+           setTimeout(refresh, 10000);
         });
-    } </script>
+    } </script>-->
 </html>
 <?php mysqli_close($con); ?>
