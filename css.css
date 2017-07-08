@@ -40,7 +40,7 @@
 }
 
 .logo{
-   
+
   height:90px;
   padding-bottom:35px;
 }
@@ -123,4 +123,5 @@ body{
 /* Add some padding inside the card container */
 .container {
     padding: 10px 16px;
+
 }

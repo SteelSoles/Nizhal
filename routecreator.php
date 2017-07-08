@@ -65,13 +65,13 @@
               <h4 style="margin-left:75px;">Lattitude:</h4>
             </div>
             <div class="col-xs-1.5">
-              <input type="text" id="eta" placeholder="Enter lattitude" width="50px" height="55px" style="margin-left:10px; font-size:10px;">
+              <input type="text" id="lat" placeholder="Enter lattitude" width="50px" height="55px" style="margin-left:10px; font-size:10px;">
             </div>
             <div class="col-xs-1.5">
               <h4 style="margin-left:75px;">Longitude:</h4>
             </div>
             <div class="col-xs-1.5">
-              <input type="text" id="eta" placeholder="Enter longitude" width="50px" height="55px" style="margin-left:10px; font-size:10px;">
+              <input type="text" id="lon" placeholder="Enter longitude" width="50px" height="55px" style="margin-left:10px; font-size:10px;">
             </div>
           </div>
 
@@ -91,38 +91,51 @@
         function setval(){
         var rt = document.getElementById('routes').value;
         var st = document.getElementById('stop').value;
-        var pst= document.getElementById('card-stops').innerHTML;
-        if(pst != "")
-        pst += ",";
-        pst += st;
-        document.cookie = "rt" + rt;
-        document.getElementById('cardp').innerHTML=rt;
-        document.getElementById('card-stops').innerHTML=pst;
+        var eta= document.getElementById('eta').value;
+        var lat= document.getElementById('lat').value;
+        var lon= document.getElementById('lon').value;
+        var table = document.getElementById("myTable");
+
+        //var cou = $('#myTable tr').length;
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+
+        cell1.innerHTML = st;
+        cell2.innerHTML = eta;
+        cell3.innerHTML = lat;
+        cell4.innerHTML = lon;
+
+
         document.getElementById('stop').value = "";
-        <?php
-        $myPhpVar= $_COOKIE['rt'];
-        $sql="insert into samp  values '$myPhpVar'";
-        try{
-      	 mysqli_query($con,$sql);
+        document.getElementById('eta').value = "";
 
-        } catch (Exception $e) {
-      	  echo "Caught exception: ",  $e->getMessage();
-        }
-        mysqli_close($con);
-
-     ?>
       }
 
       function saveval(){
         var rt = document.getElementById('cardp').innerHTML;
-        var rs = document.getElementById('card-stops').innerHTML;
+
 
       }
       </script>
-      <div class="card" style="margin-top:10px">
+      <div class="card" style="margin-top:10px; text-align: center;">
         <div class="container" >
-          <h3 id="cardp">No Routes Yet</h3>
-          <h5 style="padding-top:20px"><span id="card-stops"></span></h5>
+          <h3 >Route:<span id="cardp"></span></h3>
+          <table class="table" id="myTable">
+            <thead>
+
+              <th>Route stop</th>
+              <th>ETA</th>
+              <th>Lattitude</th>
+              <th>Longitude</th>
+
+            </thead>
+
+          </table>
+
+
       </div>
   </div>
   <div class="save-btn" >

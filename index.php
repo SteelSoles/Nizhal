@@ -9,8 +9,8 @@
 <?php
 define('HOST','localhost');
 define('USER','root');
-define('PASS','');
-define('DB','digiTrack');
+define('PASS','123456');
+define('DB','DigiTrack');
 $con = mysqli_connect(HOST,USER,PASS,DB);
 
  $sql = "SELECT lat, lon
@@ -83,24 +83,24 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
       <script>
         var map;
-       function initMap() 
+       function initMap()
     {
           map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 11.11211, lng: 79.84354},
             zoom: 2
-          }); 
+          });
 
        var marker = new google.maps.Marker({
-      position:{lat:8 , lng:8 },
+      position:{lat:0 , lng:0 },
       map: map,
-      title: 'chennai!'});  
-           
-           
-              
-    setInterval(  function updatePosition() 
+      title: 'chennai!'});
+
+
+
+    setInterval(  function updatePosition()
            {
                $.ajax({
-            
+
         type : 'GET',
 
         url: 'testget.php',
@@ -113,17 +113,17 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
                         marker.setPosition( latLng );
                         // call the function again
                         }
-                    }); 
+                    });
             }           , 1000 );
 
    }
-    
-   
-        
+
+
+
     </script>
     </div>
     </div>
-     
+
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD3JhqHiQ6D1476y-CDHAoFQML9zMhX0w&callback=initMap"
       async defer></script>
 </div>
