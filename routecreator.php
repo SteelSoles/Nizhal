@@ -1,3 +1,10 @@
+<?php
+define('HOST','localhost');
+define('USER','root');
+define('PASS','123456');
+define('DB','DigiTrack');
+$con = mysqli_connect(HOST,USER,PASS,DB);
+ ?>
 <html>
 <head>
 <link rel="stylesheet" href="css.css">
@@ -81,13 +88,7 @@
       <button  onclick="setval()" style="margin-left:500px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
       <script type="text/javascript">
 
-      <?php
-      define('HOST','localhost');
-      define('USER','root');
-      define('PASS','123456');
-      define('DB','DigiTrack');
-      $con = mysqli_connect(HOST,USER,PASS,DB);
-       ?>
+
         function setval(){
         var rt = document.getElementById('routes').value;
         var st = document.getElementById('stop').value;
@@ -96,20 +97,24 @@
         var lon= document.getElementById('lon').value;
         var table = document.getElementById("myTable");
         var rows = document.getElementById("myTable").getElementsByTagName("tr").length;
-
-        //var cou = $('#myTable tr').length;
         var row = table.insertRow(rows);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
 
+      /*  $.ajax({
+          type: 'POST',
+          url: 'sendroute.php',
+          data: {'stop': st},
+        });*/
+
         cell1.innerHTML = st;
         cell2.innerHTML = eta;
         cell3.innerHTML = lat;
         cell4.innerHTML = lon;
 
-
+        document.getElementById('cardp').innerHTML=rt;
         document.getElementById('stop').value = "";
         document.getElementById('eta').value = "";
         document.getElementById('lat').value = "";
@@ -118,7 +123,6 @@
       }
 
       function saveval(){
-        var rt = document.getElementById('cardp').innerHTML;
 
 
       }
