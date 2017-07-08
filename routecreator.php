@@ -95,9 +95,10 @@
         var lat= document.getElementById('lat').value;
         var lon= document.getElementById('lon').value;
         var table = document.getElementById("myTable");
+        var rows = document.getElementById("myTable").getElementsByTagName("tr").length;
 
         //var cou = $('#myTable tr').length;
-        var row = table.insertRow(1);
+        var row = table.insertRow(rows);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
@@ -111,6 +112,8 @@
 
         document.getElementById('stop').value = "";
         document.getElementById('eta').value = "";
+        document.getElementById('lat').value = "";
+        document.getElementById('lon').value = "";
 
       }
 
@@ -123,15 +126,19 @@
       <div class="card" style="margin-top:10px; text-align: center;">
         <div class="container" >
           <h3 >Route:<span id="cardp"></span></h3>
-          <table class="table" id="myTable">
-            <thead>
 
+          <table class="table" id="myTable">
+            <!--details here-->
+            <thead>
               <th>Route stop</th>
               <th>ETA</th>
               <th>Lattitude</th>
               <th>Longitude</th>
-
             </thead>
+              <tbody>
+
+              </tbody>
+
 
           </table>
 
