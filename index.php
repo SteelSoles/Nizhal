@@ -128,14 +128,6 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
       async defer></script>
 </div>
 </body>
-<!--<script> $(document).ready(function(){
-      refresh();
-    });
 
-    function refresh(){
-        $('#js').load('ajaindex.php', function(){
-           setTimeout(refresh, 10000);
-        });
-    } </script>-->
 </html>
 <?php mysqli_close($con); ?>
