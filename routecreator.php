@@ -1,8 +1,8 @@
 <?php
 define('HOST','localhost');
 define('USER','root');
-define('PASS','123456');
-define('DB','DigiTrack');
+define('PASS','');
+define('DB','digiTrack');
 $con = mysqli_connect(HOST,USER,PASS,DB);
  ?>
 <html>
@@ -11,6 +11,7 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <style>
     html, body {
       height: 100%;
@@ -85,7 +86,7 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
       </div>
 
-      <button  onclick="setval()" style="margin-left:500px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
+      <button  onclick="setval()" id="a" style="margin-left:500px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
       <script type="text/javascript">
 
 
@@ -95,6 +96,12 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
         var eta= document.getElementById('eta').value;
         var lat= document.getElementById('lat').value;
         var lon= document.getElementById('lon').value;
+          
+     
+            
+            
+            
+            
         var table = document.getElementById("myTable");
         var rows = document.getElementById("myTable").getElementsByTagName("tr").length;
         var row = table.insertRow(rows);
@@ -119,13 +126,37 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
         document.getElementById('eta').value = "";
         document.getElementById('lat').value = "";
         document.getElementById('lon').value = "";
+                          
+      
 
       }
-
-      function saveval(){
-
-
-      }
+          
+$( "#a" ).click(function() 
+        {
+            var rt = $('#routes').val()
+            var st = $('#stop').val()
+            var eta = $('#eta').val()
+            var lat = $('#lat').val()
+            var lon = $('#lon').val()
+          
+          
+             $.ajax({
+                        url:  'routesave.php?one=' +rt+ '&two=' +st+ '&three=' +lat+ '&four=' +lon+ '&five=' +eta,
+                        type: 'POST',
+                                
+                        success: function( response )
+                        {
+                            alert('yay ajax is done.' );
+                        },
+                        error: function()
+                        {
+                            alert("failure");
+                        } 
+                    }); 
+   
+        });          
+        
+          
       </script>
       <div class="card" style="margin-top:10px; text-align: center;">
         <div class="container" >
@@ -140,19 +171,18 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
               <th>Longitude</th>
             </thead>
               <tbody>
-
               </tbody>
-
-
           </table>
-
-
+          </div>
       </div>
-  </div>
-  <div class="save-btn" >
-    <button class="btn btn-warning" style="box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2); font-size:17px;" onclick="saveval()">Save</button>
-  </div>
+  
+      
+        <div class="save-btn" >
+           <button class="btn btn-warning" style="box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2); font-size:17px;" onclick="saveval()">Save</button>
+        </div>
 
+</div>
+</div>
 </div>
 </body>
 </html>
