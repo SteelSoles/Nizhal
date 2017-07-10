@@ -48,45 +48,34 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
         <form  method="post" id="reg-form">
           <div class="row">
             <div class="col-xs-1.5" style="margin-left:15px;">
-                <h3>Route name:</h3>
+                <h3>Bus No:</h3>
             </div>
             <div class="col-md-6">
-                  <input type="text" id="routes" name="routes" placeholder="Enter Route Name" width="20px" height="55px" style="font-size:15px;">
+                  <input type="text" id="bus" name="bus" placeholder="Enter Bus No" width="20px" height="55px" style="margin-left:50px; font-size:15px;">
             </div>
 
           </div><br>
 
           <div class="row">
             <div class="col-xs-1.5" style="margin-left:15px;">
-                <h3>Stop name:</h3>
+                <h3>Device ID:</h3>
             </div>
             <div class="col-md-4">
-                  <input type="text" id="stop" name="stop" placeholder="Enter Stop Name" width="50px" height="55px" style="margin-left:10px; font-size:15px;">
+              <input type="text" id="device" name="device" placeholder="Enter Bus No" width="20px" height="55px" style="margin-left:30px; font-size:15px;">
             </div>
 
           </div><br>
 
           <div class="row">
             <div class="col-xs-1.5" style="margin-left:15px;">
-              <h4>ETA:</h4>
+              <h3>Route Name:</h3>
             </div>
-            <div class="col-xs-1.5">
-              <input type="text" id="eta" name="eta" placeholder="Enter Time of arrival" width="50px" height="55px" style="margin-left:85px; font-size:10px;">
+            <div class="col-md-4">
+              <input type="text" id="rt" name="route" placeholder="Enter Route Name" width="20px" height="55px" style="margin-left:07px; font-size:15px;">
             </div>
-            <div class="col-xs-1.5">
-              <h4 style="margin-left:75px;">Lattitude:</h4>
-            </div>
-            <div class="col-xs-1.5">
-              <input type="text" id="lat" name="lat" placeholder="Enter lattitude" width="50px" height="55px" style="margin-left:10px; font-size:10px;">
-            </div>
-            <div class="col-xs-1.5">
-              <h4 style="margin-left:75px;">Longitude:</h4>
-            </div>
-            <div class="col-xs-1.5">
-              <input type="text" id="lon" name="lon" placeholder="Enter longitude" width="50px" height="55px" style="margin-left:10px; font-size:10px;">
-            </div>
+
           </div>
-          <button   type="submit" name="submit"  style="margin-left:500px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
+          <button   type="submit" name="submit"  style="margin-left:255px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
 
             </form>
       </div>
@@ -97,15 +86,14 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
       e.preventDefault(); // Prevent Default Submission
 
-      $.post('routesave.php', $(this).serialize() )
+      $.post('bussave.php', $(this).serialize() )
       .done(function(data){
-        var ab="hello";
-        $('#cardp').html($('#routes').val());
-        $('#myTable tbody').append('<tr><td>'+$('#stop').val()+'</td><td>'+$('#eta').val()+'</td><td>'+$('#lat').val()+'</td><td>'+$('#lon').val()+'</td></tr>');
-        $('#stop').val("");
-        $('#eta').val("");
-        $('#lat').val("");
-        $('#lon').val("");
+
+        //$('#cardp').html($('#bus').val());
+        $('#myTable tbody').append('<tr><td>'+$('#bus').val()+'</td><td>'+$('#device').val()+'</td><td>'+$('#rt').val()+'</td></tr>');
+        $('#device').val("");
+        $('#rt').val("");
+
 
         //alert('Ajax Submit passed ...');
       })
@@ -116,19 +104,16 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
       </script>
 
-
-
       <div class="card" style="margin-top:10px; text-align: center;">
         <div class="container" >
-          <h3 >Route:<span id="cardp"></span></h3>
+          <h3 >Buses<span id="cardp"></span></h3>
 
           <table class="table" id="myTable">
             <!--details here-->
             <thead>
-              <th>Route stop</th>
-              <th>ETA</th>
-              <th>Lattitude</th>
-              <th>Longitude</th>
+              <th>Bus No.</th>
+              <th>Device Id</th>
+              <th>Route</th>
             </thead>
               <tbody>
               </tbody>
@@ -138,7 +123,7 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
 
         <div class="save-btn" >
-          <a href="route.php"> <button class="btn btn-warning" style="box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2); font-size:17px;" onclick="saveval()">Save</button></a>
+          <a href="buses.php"> <button class="btn btn-warning" style="box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2); font-size:17px;" onclick="saveval()">Save</button></a>
         </div>
 
 </div>

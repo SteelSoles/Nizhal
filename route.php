@@ -4,8 +4,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-    
- <link rel="stylesheet" href="route.css">   
+
+ <link rel="stylesheet" href="route.css">
 <style>
 
     html, body {
@@ -14,9 +14,9 @@
       padding: 0;
     }
   </style>
-    
-    <?php
-    
+
+    <!-- <?php
+
     $sql= new mysqli('localhost','root', '', 'digitrack' );
 
                                                         if($sql->connect_error)
@@ -31,15 +31,15 @@ if ($query!=TRUE)
 {
     echo "error".$sql->error;
 }
-                                                
-    
-    ?>
+
+
+    ?> -->
 
 </head>
-    
-    
-    
-    
+
+
+
+
 <body>
   <div class="container-fluid">
 <div class="pannel-yellow">
@@ -58,38 +58,38 @@ if ($query!=TRUE)
   <!--nav ends here-->
 </div>
     </div>
-     
+
     <div class="container well base">
-        
+
                                     <?php
                                             if($query!==FALSE)
                                                     {
                                                         while($row = mysqli_fetch_array($query))
-                                                                 {  
-                                                             echo " <div class=\"well cards\"> <h1>" 
+                                                                 {
+                                                             echo " <div class=\"well cards\"> <h1>"
                                                              .$row["route"]."</h1>";
-                                                          $row1 = mysqli_fetch_array($query1); 
-                                                          
-                                                                echo "<p>".$row1["stops"]."</p></div>";      
- 
-                                                          
-                                                                     
-                                                                     
+                                                          $row1 = mysqli_fetch_array($query1);
+
+                                                                echo "<p>".$row1["stops"]."</p></div>";
+
+
+
+
 
                                                                  }
                                                                                 mysqli_free_result($query);
                                                                                 mysqli_free_result($query1);
                                                     }
-        
-                 
-        
-  
-                                    ?>    
-  
-    
-    
-    
-    
+
+
+
+
+                                    ?>
+
+
+
+
+
     </div>
 </body>
 </html>
