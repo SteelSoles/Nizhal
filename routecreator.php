@@ -42,6 +42,7 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
     <h1>Route Creation</h1>
     <hr style="border-color:#ecaa0b;">
       <div class="rtcrt-input">
+        <form class="myform" action="routesave.php" method="post">
           <div class="row">
             <div class="col-xs-1.5" style="margin-left:15px;">
                 <h3>Route name:</h3>
@@ -82,11 +83,12 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
               <input type="text" id="lon" placeholder="Enter longitude" width="50px" height="55px" style="margin-left:10px; font-size:10px;">
             </div>
           </div>
+          <button  type="submit" id="a" style="margin-left:500px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
 
-
+            </form>
       </div>
 
-      <button  onclick="setval()" id="a" style="margin-left:500px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
+      <!-- <button  onclick="setval()" id="a" style="margin-left:500px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button> -->
       <script type="text/javascript">
 
 
@@ -96,12 +98,12 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
         var eta= document.getElementById('eta').value;
         var lat= document.getElementById('lat').value;
         var lon= document.getElementById('lon').value;
-          
-     
-            
-            
-            
-            
+
+
+
+
+
+
         var table = document.getElementById("myTable");
         var rows = document.getElementById("myTable").getElementsByTagName("tr").length;
         var row = table.insertRow(rows);
@@ -126,24 +128,24 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
         document.getElementById('eta').value = "";
         document.getElementById('lat').value = "";
         document.getElementById('lon').value = "";
-                          
-      
+
+
 
       }
-          
-$( "#a" ).click(function() 
+
+$( "#a" ).click(function()
         {
             var rt = $('#routes').val()
             var st = $('#stop').val()
             var eta = $('#eta').val()
             var lat = $('#lat').val()
             var lon = $('#lon').val()
-          
-          
+
+
              $.ajax({
                         url:  'routesave.php?one=' +rt+ '&two=' +st+ '&three=' +lat+ '&four=' +lon+ '&five=' +eta,
-                        type: 'POST',
-                                
+                        type: 'GET',
+
                         success: function( response )
                         {
                             alert('yay ajax is done.' );
@@ -151,12 +153,12 @@ $( "#a" ).click(function()
                         error: function()
                         {
                             alert("failure");
-                        } 
-                    }); 
-   
-        });          
-        
-          
+                        }
+                    });
+
+        });
+
+
       </script>
       <div class="card" style="margin-top:10px; text-align: center;">
         <div class="container" >
@@ -175,8 +177,8 @@ $( "#a" ).click(function()
           </table>
           </div>
       </div>
-  
-      
+
+
         <div class="save-btn" >
            <button class="btn btn-warning" style="box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2); font-size:17px;" onclick="saveval()">Save</button>
         </div>
