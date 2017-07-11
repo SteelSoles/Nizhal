@@ -9,20 +9,39 @@
 <?php
 define('HOST','localhost');
 define('USER','root');
-define('PASS','123456');
-define('DB','DigiTrack');
+define('PASS','');
+define('DB','digitrack');
 $con = mysqli_connect(HOST,USER,PASS,DB);
 
- $sql = "SELECT lat, lon
-    FROM device
-    ORDER BY entry DESC
+if(isset($_GET["a"]))
+                                {
+                                    $a = $_GET["a"];
+                                }
+                                     else $a='ECR';
+    
+    
+    
+    $sql2 = "SELECT * FROM bus where route_id= '$a'";
+  $res2 = mysqli_query($con,$sql2);
+    $row2 = mysqli_fetch_array($res2);
+    $dev_id = $row2["device_id"];
+
+
+
+ $sql = "SELECT *
+    FROM device where device_id=$dev_id
+    ORDER BY time DESC
     LIMIT 1 ";
   $res = mysqli_query($con,$sql);
     $row = mysqli_fetch_array($res);
 
 
-$sql1 = "select distinct route from route";
+$sql1 = "select distinct route_id from route";
   $res1 = mysqli_query($con,$sql1);
+$sql3="SELECT GROUP_CONCAT(name SEPARATOR ', ') as stop FROM route GROUP BY route_id";
+$query3= mysqli_query($con,$sql3);
+
+
 
 
  ?>
@@ -74,16 +93,24 @@ $sql1 = "select distinct route from route";
      {
          while( $row1 = mysqli_fetch_array($res1))
          {
-             echo "<a href=\"\"><div class=\"card\">
+             echo "<a id=\"click\" href=\"index.php?a=".$row1["route_id"]."\"><div class=\"card\">
                 <div class=\"container\">
-               <h4><b>".$row1["route"]."</b></h4>
-               <p></p>
+               <h4><b>".$row1["route_id"]."</b></h4>
+               <p>";
+             
+             $row3 = mysqli_fetch_array($query3);
+             echo $row3["stop"]."</p>
                 </div>
                     </div></a>";
          }
      }
 
 ?>
+     
+     <script>
+                                                    
+     
+     </script>
   </div>
 
 <div class=" align-right ">

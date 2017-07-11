@@ -60,7 +60,7 @@ $sql= new mysqli('localhost','root', '', 'digitrack' );
                                                              .$row["bus_no"]."</h1>";
                                                         
 
-                                                                echo "<p>".$row["route"]."</p></div>";
+                                                                echo "<p>".$row["route_id"]."</p></div>";
 
 
 

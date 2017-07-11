@@ -17,15 +17,15 @@
 
     <!-- <?php
 
-    $sql= new mysqli('localhost','root', '123456', 'DigiTrack' );
+    $sql= new mysqli('localhost','root', '', 'Digitrack' );
 
                                                         if($sql->connect_error)
 
                                                             { die("connection failed:". $sql->connect_error);
                                                             }
 
-$query= $sql->query("select distinct route from route order by route");
-$query1= $sql->query("SELECT GROUP_CONCAT(stop SEPARATOR ', ') as stop FROM route GROUP BY route");
+$query= $sql->query("select distinct route_id from route order by route_id");
+$query1= $sql->query("SELECT GROUP_CONCAT(name SEPARATOR ', ') as stop FROM route GROUP BY route_id");
 
 if ($query!=TRUE)
 {
@@ -69,7 +69,7 @@ if ($query!=TRUE)
                                                         while($row = mysqli_fetch_array($query))
                                                                  {
                                                              echo " <div class=\"well cards\" style=\"float: left;\"> <h1>"
-                                                             .$row["route"]."</h1>";
+                                                             .$row["route_id"]."</h1>";
                                                           $row1 = mysqli_fetch_array($query1);
 
                                                                 echo "<p>".$row1["stop"]."</p></div>";

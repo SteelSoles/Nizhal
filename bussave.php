@@ -17,7 +17,7 @@ $sql= new mysqli('localhost','root', '', 'digitrack' );
                                                             { die("connection failed:". $sql->connect_error);
                                                             }
 
-$query= $sql->query("INSERT INTO `bus`(`bus_no`, `device_id`, `route`) VALUES ('$bus','$device','$route')");
+$query= $sql->query("INSERT INTO `bus`(`bus_no`, `device_id`, `route_id`) VALUES ('$bus','$device','$route')");
 
 if ($query!=TRUE){
     echo "error".$sql->error;

@@ -2,7 +2,7 @@
 define('HOST','localhost');
 define('USER','root');
 define('PASS','');
-define('DB','digiTrack');
+define('DB','digitrack');
 $con = mysqli_connect(HOST,USER,PASS,DB);
 
  ?>

@@ -6,9 +6,9 @@ header('Content-Type: application/json');
 
                                     { die("connection failed:". $sql->connect_error);
                                     }
+$a=$_GET["dev_id"];
 
-
-                                $querry= $sql->query("SELECT lat, lon FROM device ORDER BY entry DESC LIMIT 1 ");
+                                $querry= $sql->query("SELECT lat, lon FROM device where device_id=$a ORDER BY time DESC LIMIT 1 ");
 
 if($querry!==FALSE){
 
