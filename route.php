@@ -53,6 +53,8 @@ if ($query!=TRUE)
     </div>
 
   <img class="logo" src="LOGOFinalwhite.png" >
+    
+    <h1>Route</h1>
 </div>
 <div style="width:100%; margin-top:17px;">
   <!--nav ends here-->
@@ -91,5 +93,13 @@ if ($query!=TRUE)
 
 
     </div>
-</body>
+    
+        <a href="routecreator.php" ><button class="btn btn-primary" id="but">Change</button></a>
+
+</body>        <hr style="border-color:#ecaa0b; width:90vw;">
+
+    <footer>
+    <img class="darc" src="D'ARC.png">
+    
+</footer>
 </html>

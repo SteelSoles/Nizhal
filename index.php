@@ -9,8 +9,8 @@
 <?php
 define('HOST','localhost');
 define('USER','root');
-define('PASS','123456');
-define('DB','DigiTrack');
+define('PASS','');
+define('DB','digitrack');
 $con = mysqli_connect(HOST,USER,PASS,DB);
 
  $sql = "SELECT lat, lon
@@ -19,9 +19,12 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
     LIMIT 1 ";
   $res = mysqli_query($con,$sql);
     $row = mysqli_fetch_array($res);
-//$result = array();
-         echo $row ['lat'];
- echo $row ['lon'];
+
+
+$sql1 = "select distinct route from routes";
+  $res1 = mysqli_query($con,$sql1);
+   
+ 
  ?>
 
 <html>
@@ -58,24 +61,29 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
     </div>
 
   <img class="logo" src="LOGOFinalwhite.png" >
+    <h1>Admin Panel</h1>
 </div>
 <div style="width:100%; margin-top:17px;">
   <!--nav ends here-->
 
  <div class=" align-left">
-   <div class="card">
-     <div class="container">
-   <h4><b>Route-name</b></h4>
-   <p>stop1,stop2,stop3</p>
- </div>
-   </div>
-
-   <div class="card">
-     <div class="container">
-   <h4><b>Route-name 2</b></h4>
-   <p>stop1,stop2,stop3?></p>
- </div>
-   </div>
+     
+<?php
+     
+     if($res1!=FALSE)
+     {
+         while( $row1 = mysqli_fetch_array($res1))
+         {
+             echo "<a href=\"\"><div class=\"card\">
+                <div class=\"container\">
+               <h4><b>".$row1["route"]."</b></h4>
+               <p></p>
+                </div>
+                    </div><a>";
+         }
+     }
+   
+?>
   </div>
 
 <div class=" align-right ">
@@ -83,16 +91,18 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
       <script>
         var map;
+          
        function initMap()
     {
           map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 11.11211, lng: 79.84354},
-            zoom: 2
+            center: {lat: <?php echo $row["lat"]; ?>, lng: <?php echo $row["lon"]; ?>},
+            zoom: 13
           });
 
        var marker = new google.maps.Marker({
-      position:{lat:0 , lng:0 },
+      position:{lat:<?php echo $row["lat"]; ?> , lng:<?php echo $row["lon"];?> },
       map: map,
+           icon: 'bus.png',
       title: 'chennai!'});
 
 
@@ -128,6 +138,11 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
       async defer></script>
 </div>
 </body>
+        <hr style="border-color:#ecaa0b; width:90vw;">
 
+<footer>
+    <img class="darc" src="D'ARC.png">
+    
+</footer>
 </html>
 <?php mysqli_close($con); ?>

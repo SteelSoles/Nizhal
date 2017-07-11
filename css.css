@@ -11,9 +11,21 @@
   transition: 0.3s;
 }
 
+.pannel-yellow h1
+{
+    text-align: left;
+    margin-top: -13vh;
+    font-size: 5vh;
+    color: #ecAA0b;
+    margin-left: 12vw;
+    border-left: 1px solid #ecAA0b;
+    padding-left: 2vw;
+}
+
 .rtcrt-input{
   padding-top: 40px;
-}
+    margin-left: 30vw;
+ }
 
 .rtcrt{
   margin-left: 10px;
@@ -36,7 +48,7 @@
 }
 
 .nav-content a:hover{
-  color:yellow;
+  color:#ecAA0b;
 }
 
 .logo{
@@ -124,3 +136,9 @@ body{
     padding: 10px 16px;
 
 }
+
+.darc
+{
+    padding-left: 1vw;
+}
+

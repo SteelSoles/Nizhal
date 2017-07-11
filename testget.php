@@ -1,6 +1,6 @@
  <?php
 header('Content-Type: application/json');
- $sql= new mysqli('localhost','root', '123456', 'DigiTrack' );
+ $sql= new mysqli('localhost','root', '', 'digitrack' );
 
                                 if($sql->connect_error)
 

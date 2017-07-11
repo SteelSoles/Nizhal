@@ -1,6 +1,9 @@
 .base
 {
    height: auto;
+    background-color: whitesmoke;
+        border: 1px solid #ecAA0b;
+
 }
 
 .cards
@@ -10,7 +13,14 @@
     float: left;
     margin: 10px 20px 10px 20px;
         color: #2b2b2b;
+    box-shadow: 0px 0px 10px #888888;
 
+}
+.cards:hover
+{
+       box-shadow: 0px 0px 20px #888888;
+    color: #ecAA0b;
+ 
 }
 
 .cards h1
@@ -24,3 +34,18 @@
     text-align: center;
  
 }
+
+#but
+{
+    height: 6vh;
+    width: 10vw;;
+    margin: 100px 100px 100px 45vw;
+    background-color: #2b2b2b;
+    font-size: 3vh;
+    color: #ecAA0b;
+ }
+
+#but:hover
+{
+    color: #f5d485;
+ }

@@ -12,7 +12,23 @@
       padding: 0;
     }
   </style>
+     <link rel="stylesheet" href="route.css">
+<?php
+$sql= new mysqli('localhost','root', '', 'digitrack' );
 
+                                                        if($sql->connect_error)
+
+                                                            { die("connection failed:". $sql->connect_error);
+                                                      }
+    
+   $query=$sql->query("select * from bus");
+    if ($query!=TRUE)
+{
+    echo "error".$sql->error;
+}
+  
+        
+  ?>        
 </head>
 <body>
   <div class="container-fluid">
@@ -27,9 +43,48 @@
     </div>
 
   <img class="logo" src="LOGOFinalwhite.png" >
+    <h1>Buses</h1>
 </div>
 <div style="width:100%; margin-top:17px;">
   <!--nav ends here-->
 </div>
-</body>
+</div>
+    <div class="container well base">
+
+                                    <?php
+                                            if($query!==FALSE)
+                                                    {
+                                                        while($row = mysqli_fetch_array($query))
+                                                                 {
+                                                             echo " <div class=\"well cards\"> <h1>"
+                                                             .$row["bus_no"]."</h1>";
+                                                        
+
+                                                                echo "<p>".$row["route"]."</p></div>";
+
+
+
+
+
+                                                                 }
+                                                                                mysqli_free_result($query);
+                                                     }
+
+
+
+
+                                    ?>
+
+
+
+
+
+    </div>
+    <a href="buscreator.php" ><button class="btn btn-primary" id="but">Change</button></a>
+</body>        <hr style="border-color:#ecaa0b; width:90vw;">
+
+    <footer>
+    <img class="darc" src="D'ARC.png">
+    
+</footer>
 </html>

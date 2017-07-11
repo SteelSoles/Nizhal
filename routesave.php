@@ -10,14 +10,14 @@ $lon=$_POST['lon'];
 
 
 
-$sql= new mysqli('localhost','root', '123456', 'DigiTrack' );
+$sql= new mysqli('localhost','root', '', 'digitrack' );
 
                                                         if($sql->connect_error)
 
                                                             { die("connection failed:". $sql->connect_error);
                                                             }
 
-$query= $sql->query("insert into route (route, stop, eta, lat, lon) values ('$route', '$stop', '$eta' ,'$lat', '$lon' ) ");
+$query= $sql->query("insert into routes (route, stop, eta, lat, lon) values ('$route', '$stop', $eta ,'$lat', '$lon' ) ");
 
 if ($query!=TRUE){
     echo "error".$sql->error;

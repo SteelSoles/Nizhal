@@ -44,7 +44,7 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
   <div class="rtcrt">
     <h1>Route Creation</h1>
     <hr style="border-color:#ecaa0b;">
-      <div class="rtcrt-input">
+      <div class="rtcrt-input ">
         <form  method="post" id="reg-form">
           <div class="row">
             <div class="col-xs-1.5" style="margin-left:15px;">
@@ -75,7 +75,7 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
             </div>
 
           </div>
-          <button   type="submit" name="submit"  style="margin-left:255px; margin-top:10px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
+          <button   type="submit" name="submit"  style="margin-left:200px; margin-top:20px; padding:5px 10px; font-size:13px;" class="btn btn-warning">Add</button>
 
             </form>
       </div>
@@ -104,7 +104,7 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
       </script>
 
-      <div class="card" style="margin-top:10px; text-align: center;">
+      <div class="card container" style="margin-top:10px; text-align: center;">
         <div class="container" >
           <h3 >Buses<span id="cardp"></span></h3>
 
@@ -129,5 +129,10 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 </div>
 </div>
 </div>
-</body>
+</body>         <hr style="border-color:#ecaa0b; width:90vw;">
+
+    <footer>
+    <img class="darc" src="D'ARC.png">
+    
+</footer>
 </html>
