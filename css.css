@@ -11,6 +11,8 @@
   transition: 0.3s;
 }
 
+
+
 .pannel-yellow h1
 {
     text-align: left;
@@ -133,12 +135,16 @@ body{
 }
 /* Add some padding inside the card container */
 .container {
+
     padding: 10px 16px;
 
+}
+
+.container h4{
+  color:black;
 }
 
 .darc
 {
     padding-left: 1vw;
 }
-

@@ -1,8 +1,8 @@
 <?php
 define('HOST','localhost');
 define('USER','root');
-define('PASS','');
-define('DB','digitrack');
+define('PASS','123456');
+define('DB','DigiTrack');
 $con = mysqli_connect(HOST,USER,PASS,DB);
 
  ?>
@@ -148,6 +148,6 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
 
     <footer>
     <img class="darc" src="D'ARC.png">
-    
+
 </footer>
 </html>

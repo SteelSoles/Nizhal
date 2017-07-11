@@ -9,8 +9,8 @@
 <?php
 define('HOST','localhost');
 define('USER','root');
-define('PASS','');
-define('DB','digitrack');
+define('PASS','123456');
+define('DB','DigiTrack');
 $con = mysqli_connect(HOST,USER,PASS,DB);
 
  $sql = "SELECT lat, lon
@@ -21,10 +21,10 @@ $con = mysqli_connect(HOST,USER,PASS,DB);
     $row = mysqli_fetch_array($res);
 
 
-$sql1 = "select distinct route from routes";
+$sql1 = "select distinct route from route";
   $res1 = mysqli_query($con,$sql1);
-   
- 
+
+
  ?>
 
 <html>
@@ -67,9 +67,9 @@ $sql1 = "select distinct route from routes";
   <!--nav ends here-->
 
  <div class=" align-left">
-     
+
 <?php
-     
+
      if($res1!=FALSE)
      {
          while( $row1 = mysqli_fetch_array($res1))
@@ -79,10 +79,10 @@ $sql1 = "select distinct route from routes";
                <h4><b>".$row1["route"]."</b></h4>
                <p></p>
                 </div>
-                    </div><a>";
+                    </div></a>";
          }
      }
-   
+
 ?>
   </div>
 
@@ -91,7 +91,7 @@ $sql1 = "select distinct route from routes";
 
       <script>
         var map;
-          
+
        function initMap()
     {
           map = new google.maps.Map(document.getElementById('map'), {
@@ -142,7 +142,7 @@ $sql1 = "select distinct route from routes";
 
 <footer>
     <img class="darc" src="D'ARC.png">
-    
+
 </footer>
 </html>
 <?php mysqli_close($con); ?>

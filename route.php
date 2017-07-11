@@ -17,15 +17,15 @@
 
     <!-- <?php
 
-    $sql= new mysqli('localhost','root', '', 'digitrack' );
+    $sql= new mysqli('localhost','root', '123456', 'DigiTrack' );
 
                                                         if($sql->connect_error)
 
                                                             { die("connection failed:". $sql->connect_error);
                                                             }
 
-$query= $sql->query("select distinct route from routes");
-$query1= $sql->query("SELECT GROUP_CONCAT(stop SEPARATOR ', ') as stops FROM routes GROUP BY route");
+$query= $sql->query("select distinct route from route order by route");
+$query1= $sql->query("SELECT GROUP_CONCAT(stop SEPARATOR ', ') as stop FROM route GROUP BY route");
 
 if ($query!=TRUE)
 {
@@ -53,7 +53,7 @@ if ($query!=TRUE)
     </div>
 
   <img class="logo" src="LOGOFinalwhite.png" >
-    
+
     <h1>Route</h1>
 </div>
 <div style="width:100%; margin-top:17px;">
@@ -61,18 +61,18 @@ if ($query!=TRUE)
 </div>
     </div>
 
-    <div class="container well base">
+    <div class="container well base ">
 
                                     <?php
                                             if($query!==FALSE)
                                                     {
                                                         while($row = mysqli_fetch_array($query))
                                                                  {
-                                                             echo " <div class=\"well cards\"> <h1>"
+                                                             echo " <div class=\"well cards\" style=\"float: left;\"> <h1>"
                                                              .$row["route"]."</h1>";
                                                           $row1 = mysqli_fetch_array($query1);
 
-                                                                echo "<p>".$row1["stops"]."</p></div>";
+                                                                echo "<p>".$row1["stop"]."</p></div>";
 
 
 
@@ -82,10 +82,6 @@ if ($query!=TRUE)
                                                                                 mysqli_free_result($query);
                                                                                 mysqli_free_result($query1);
                                                     }
-
-
-
-
                                     ?>
 
 
@@ -93,13 +89,13 @@ if ($query!=TRUE)
 
 
     </div>
-    
+
         <a href="routecreator.php" ><button class="btn btn-primary" id="but">Change</button></a>
 
 </body>        <hr style="border-color:#ecaa0b; width:90vw;">
 
     <footer>
     <img class="darc" src="D'ARC.png">
-    
+
 </footer>
 </html>
